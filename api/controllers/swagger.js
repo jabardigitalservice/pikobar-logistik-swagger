@@ -8,20 +8,22 @@ const options = {
       version: '1.0.0',
       description: 'REST API with Swagger doc',
       contact: {
-        email: 'contact@danielpecos.com'
+        email: 'arifboyz16@gmail.com'
       }
     },
-    tags: [
-      {
-        name: 'stocks',
-        description: 'Stocks API'
-      }
-    ],
     schemes: ['http'],
     host: 'localhost:3000',
     basePath: '/api'
   },
-  apis: ['./api/controllers/stocks.js', './api/models/stock-model.js']
+  apis: [
+    // Controler
+    './api/controllers/user.js',
+    './api/controllers/stocks.js',
+
+    // Models
+    './api/models/user-model.js',
+    './api/models/stock-model.js'
+  ]
 }
 
 const swaggerJSDoc = require('swagger-jsdoc')

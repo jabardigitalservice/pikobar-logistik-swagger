@@ -1,16 +1,20 @@
-import Model from '../models/stock-model'
+import stockModel from '../models/stock-model'
+import userModel from '../models/user-model'
 
 export default class StocksMemoryDAO {
   constructor () {
     this.data = new Map()
 
     this.createStock(1, 'AAPL', 161.17, Date.now())
-    this.createStock(2, 'MSFT', 72.72, Date.now())
-    this.createStock(3, 'GOOG', 930.38, Date.now())
+    this.createUser(1, 'AAPL', 161.17, Date.now())
+  }
+
+  createUser (id, name, currentPrice, lastUpdate) {
+    this.data.set(id, new userModel(id, name, currentPrice, lastUpdate))
   }
 
   createStock (id, name, currentPrice, lastUpdate) {
-    this.data.set(id, new Model(id, name, currentPrice, lastUpdate))
+    this.data.set(id, new stockModel(id, name, currentPrice, lastUpdate))
   }
 
   retrieveAll () {
