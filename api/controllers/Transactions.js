@@ -8,7 +8,7 @@ const router = express.Router()
 
 /**
  * @swagger
- * /areas/transactions:
+ * /v1/transactions:
  *   get:
  *     description: Retrieve the full list of Transactions
  *     tags:
@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/transactions/{id}:
+ * /v1/transactions/{id}:
  *   get:
  *     description: Retrieve an specific Transactions
  *     tags:
@@ -61,7 +61,7 @@ router.get('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/transactions/{id}:
+ * /v1/transactions/{id}:
  *   put:
  *     description: Update lastUpdate field of an Transactions
  *     tags:
@@ -92,7 +92,7 @@ router.put('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/transactions:
+ * /v1/transactions:
  *   post:
  *     description: Create a new Transactions
  *     tags:

@@ -8,7 +8,7 @@ const router = express.Router()
 
 /**
  * @swagger
- * /areas/cities:
+ * /v1/areas/cities:
  *   get:
  *     description: Retrieve the full list of districtcity
  *     tags:
@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/cities/{id}:
+ * /v1/areas/cities/{id}:
  *   get:
  *     description: Retrieve an specific Districtcity
  *     tags:
@@ -61,7 +61,7 @@ router.get('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/cities/{id}:
+ * /v1/areas/cities/{id}:
  *   put:
  *     description: Update lastUpdate field of an Districtcity
  *     tags:
@@ -92,7 +92,7 @@ router.put('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/cities:
+ * /v1/areas/cities:
  *   post:
  *     description: Create a new districtcity
  *     tags:

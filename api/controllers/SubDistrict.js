@@ -8,7 +8,7 @@ const router = express.Router()
 
 /**
  * @swagger
- * /areas/subdistricts:
+ * /v1/areas/subdistricts:
  *   get:
  *     description: Retrieve the full list of Subdistrict
  *     tags:
@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/subdistricts/{id}:
+ * /v1/areas/subdistricts/{id}:
  *   get:
  *     description: Retrieve an specific Subdistricts
  *     tags:
@@ -61,7 +61,7 @@ router.get('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/subdistricts/{id}:
+ * /v1/areas/subdistricts/{id}:
  *   put:
  *     description: Update lastUpdate field of an Subdistrict
  *     tags:
@@ -92,7 +92,7 @@ router.put('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /areas/subdistricts:
+ * /v1/areas/subdistricts:
  *   post:
  *     description: Create a new Subdistrict
  *     tags:

@@ -8,7 +8,7 @@ const router = express.Router()
 
 /**
  * @swagger
- * /user:
+ * /v1/user:
  *   get:
  *     description: Retrieve the full list of user
  *     tags:
@@ -34,7 +34,7 @@ router.get('/', (req, res, next) => {
 
 /**
  * @swagger
- * /user/{id}:
+ * /v1/user/{id}:
  *   get:
  *     description: Retrieve an specific user
  *     tags:
@@ -61,7 +61,7 @@ router.get('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /user/{id}:
+ * /v1/user/{id}:
  *   put:
  *     description: Update lastUpdate field of an user
  *     tags:
@@ -92,7 +92,7 @@ router.put('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /user:
+ * /v1/user:
  *   post:
  *     description: Create a new user
  *     tags:

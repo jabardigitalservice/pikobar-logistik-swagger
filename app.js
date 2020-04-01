@@ -5,7 +5,10 @@ var bodyParser = require('body-parser')
 
 const port = 3000
 
-var user = require('./api/controllers/user')
+var User = require('./api/controllers/User')
+var Transactions = require('./api/controllers/Transactions')
+var DistrictCity = require('./api/controllers/DistrictCity')
+var SubDistrict = require('./api/controllers/SubDistrict')
 var swagger = require('./api/controllers/swagger')
 
 var app = express()
@@ -15,7 +18,10 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-app.use('/api/user', user)
+app.use('/api/v1/user', User)
+app.use('/api/v1/transactions', Transactions)
+app.use('/api/v1/areas/cities', DistrictCity)
+app.use('/api/v1/areas/subdistrict', SubDistrict)
 app.use('/api/docs', swagger.router)
 
 // catch 404 and forward to error handler
