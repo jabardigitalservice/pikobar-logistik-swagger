@@ -1,28 +1,36 @@
 const express = require('express')
 const router = express.Router()
 
-const options = {
-  swaggerDefinition: {
-    info: {
-      title: 'REST - Swagger',
-      version: '1.0.0',
-      description: 'REST API with Swagger doc',
-      contact: {
-        email: 'arifboyz16@gmail.com'
-      }
-    },
-    schemes: ['http'],
-    host: 'localhost:3000',
-    basePath: '/api'
+const swaggerDefinition = {
+  info: {
+    title: 'REST - Swagger',
+    version: '1.0.0',
+    description: 'REST API with Swagger doc',
+    contact: {
+      email: 'arifboyz16@gmail.com'
+    }
   },
+  schemes: ['http'],
+  host: 'localhost:3000',
+  basePath: '/api'
+  // securityDefinitions: {
+  //   bearerAuth: {
+  //     type: 'apiKey',
+  //     name: 'Authorization',
+  //     scheme: 'bearer',
+  //     in: 'header',
+  //   },
+  // },
+}
+
+const options = {
+  swaggerDefinition,
   apis: [
     // Controler
-    './api/controllers/user.js',
-    './api/controllers/stocks.js',
+    './api/controllers/*.js',
 
     // Models
-    './api/models/user-model.js',
-    './api/models/stock-model.js'
+    './api/models/*.js'
   ]
 }
 

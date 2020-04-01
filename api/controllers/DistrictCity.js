@@ -8,114 +8,114 @@ const router = express.Router()
 
 /**
  * @swagger
- * /user:
+ * /areas/cities:
  *   get:
- *     description: Retrieve the full list of user
+ *     description: Retrieve the full list of districtcity
  *     tags:
- *       - user
+ *       - districtcity
  *     parameters:
  *       - in: query
- *         name: fullname
+ *         name: kabkota_kode
  *         schema:
  *           type: string
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *         description: user
+ *         description: districtcity
  *         schema:
- *           $ref: '#/definitions/Users'
+ *           $ref: '#/definitions/Districtcitys'
  */
 router.get('/', (req, res, next) => {
   const response = dao.retrieveAll()
-  Swagger.validateModel('User', response)
+  Swagger.validateModel('Districtcity', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * /user/{id}:
+ * /areas/cities/{id}:
  *   get:
- *     description: Retrieve an specific user
+ *     description: Retrieve an specific Districtcity
  *     tags:
- *       - user
+ *       - districtcity
  *     produces:
  *       - application/json
  *     parameters:
  *       - name: id
- *         description: id of the user to retrieve
+ *         description: id of the Districtcity to retrieve
  *         in: path
  *         required: true
  *         type: number
  *     responses:
  *       200:
- *         description: user
+ *         description: districtcity
  *         schema:
- *           $ref: '#/definitions/Users'
+ *           $ref: '#/definitions/Districtcitys'
  */
 router.get('/:id', (req, res, next) => {
   const response = dao.retrieve(parseInt(req.params.id, 10))
-  Swagger.validateModel('User', response)
+  Swagger.validateModel('Districtcity', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * /user/{id}:
+ * /areas/cities/{id}:
  *   put:
- *     description: Update lastUpdate field of an user
+ *     description: Update lastUpdate field of an Districtcity
  *     tags:
- *       - user
+ *       - districtcity
  *     produces:
  *       - application/json
  *     parameters:
  *       - name: id
- *         description: id of the user to update
+ *         description: id of the Districtcity to update
  *         in: path
  *         required: true
  *         type: number
  *       - name: lastUpdate
- *         description: timestamp to use as user's lastUpdate field
+ *         description: timestamp to use as Districtcity's lastUpdate field
  *         in: body
  *         required: true
  *     responses:
  *       200:
- *         description: updated user
+ *         description: updated Districtcity
  *         schema:
- *           $ref: '#/definitions/Users'
+ *           $ref: '#/definitions/Districtcitys'
  */
 router.put('/:id', (req, res, next) => {
   const response = dao.update(parseInt(req.params.id, 10), req.body.lastUpdate)
-  Swagger.validateModel('User', response)
+  Swagger.validateModel('Districtcity', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * /user:
+ * /areas/cities:
  *   post:
- *     description: Create a new user
+ *     description: Create a new districtcity
  *     tags:
- *       - user
+ *       - districtcity
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: user
- *         description: user object
+ *       - name: districtcity
+ *         description: districtcity object
  *         in: body
  *         required: true
  *         schema:
- *           $ref: '#/definitions/User'
+ *           $ref: '#/definitions/Districtcitys'
  *     responses:
  *       200:
- *         description: new user
+ *         description: new districtcity
  *         schema:
- *           $ref: '#/definitions/Users'
+ *           $ref: '#/definitions/Districtcitys'
  */
 router.post('/', (req, res, next) => {
-  Swagger.validateModel('User', req.body)
+  Swagger.validateModel('Districtcity', req.body)
   const response = dao.create(req.body)
-  Swagger.validateModel('User', response)
+  Swagger.validateModel('Districtcity', response)
   res.send(response)
 })
 

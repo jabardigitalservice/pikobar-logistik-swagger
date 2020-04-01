@@ -6,7 +6,6 @@ var bodyParser = require('body-parser')
 const port = 3000
 
 var user = require('./api/controllers/user')
-var stocks = require('./api/controllers/stocks')
 var swagger = require('./api/controllers/swagger')
 
 var app = express()
@@ -16,7 +15,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-app.use('/api/stocks', stocks)
 app.use('/api/user', user)
 app.use('/api/docs', swagger.router)
 

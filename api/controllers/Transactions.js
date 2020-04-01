@@ -8,124 +8,114 @@ const router = express.Router()
 
 /**
  * @swagger
- * /stocks:
+ * /areas/transactions:
  *   get:
- *     description: Retrieve the full list of stocks
+ *     description: Retrieve the full list of Transactions
  *     tags:
- *       - stocks
+ *       - transactions
+ *     parameters:
+ *       - in: query
+ *         name: kabkota_kode
+ *         schema:
+ *           type: string
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *         description: stocks
+ *         description: Transactions
  *         schema:
- *           $ref: '#/definitions/Stocks'
+ *           $ref: '#/definitions/Transactions'
  */
 router.get('/', (req, res, next) => {
   const response = dao.retrieveAll()
-  Swagger.validateModel('Stocks', response)
+  Swagger.validateModel('Transactions', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * /stocks/{id}:
+ * /areas/transactions/{id}:
  *   get:
- *     description: Retrieve an specific stock
+ *     description: Retrieve an specific Transactions
  *     tags:
- *       - stocks
+ *       - transactions
  *     produces:
  *       - application/json
  *     parameters:
  *       - name: id
- *         description: id of the stock to retrieve
+ *         description: id of the Transactions to retrieve
  *         in: path
  *         required: true
  *         type: number
  *     responses:
  *       200:
- *         description: stock
+ *         description: Transactions
  *         schema:
- *           $ref: '#/definitions/Stock'
+ *           $ref: '#/definitions/Transactions'
  */
 router.get('/:id', (req, res, next) => {
   const response = dao.retrieve(parseInt(req.params.id, 10))
-  Swagger.validateModel('Stock', response)
+  Swagger.validateModel('Transactions', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * definitions:
- *   TimeStamp:
- *     type: object
- *     required:
- *       - lastUpdate
- *     properties:
- *       lastUpdate:
- *         type: number
- */
-
-/**
- * @swagger
- * /stocks/{id}:
+ * /areas/transactions/{id}:
  *   put:
- *     description: Update lastUpdate field of an stock
+ *     description: Update lastUpdate field of an Transactions
  *     tags:
- *       - stocks
+ *       - transactions
  *     produces:
  *       - application/json
  *     parameters:
  *       - name: id
- *         description: id of the stock to update
+ *         description: id of the Transactions to update
  *         in: path
  *         required: true
  *         type: number
  *       - name: lastUpdate
- *         description: timestamp to use as stock's lastUpdate field
+ *         description: timestamp to use as Transactions's lastUpdate field
  *         in: body
  *         required: true
- *         schema:
- *           $ref: '#/definitions/TimeStamp'
  *     responses:
  *       200:
- *         description: updated stock
+ *         description: updated Transactions
  *         schema:
- *           $ref: '#/definitions/Stock'
+ *           $ref: '#/definitions/Transactions'
  */
 router.put('/:id', (req, res, next) => {
-  Swagger.validateModel('TimeStamp', req.body)
   const response = dao.update(parseInt(req.params.id, 10), req.body.lastUpdate)
-  Swagger.validateModel('Stock', response)
+  Swagger.validateModel('Transactions', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * /stocks:
+ * /areas/transactions:
  *   post:
- *     description: Create a new stock
+ *     description: Create a new Transactions
  *     tags:
- *       - stocks
+ *       - transactions
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: stock
- *         description: Stock object
+ *       - name: transactions
+ *         description: Transactions object
  *         in: body
  *         required: true
  *         schema:
- *           $ref: '#/definitions/Stock'
+ *           $ref: '#/definitions/Transactions'
  *     responses:
  *       200:
- *         description: new stock
+ *         description: new Transactions
  *         schema:
- *           $ref: '#/definitions/Stock'
+ *           $ref: '#/definitions/Transactions'
  */
 router.post('/', (req, res, next) => {
-  Swagger.validateModel('Stock', req.body)
+  Swagger.validateModel('Transactions', req.body)
   const response = dao.create(req.body)
-  Swagger.validateModel('Stock', response)
+  Swagger.validateModel('Transactions', response)
   res.send(response)
 })
 

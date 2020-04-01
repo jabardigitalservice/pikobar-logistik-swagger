@@ -1,20 +1,14 @@
-import stockModel from '../models/stock-model'
-import userModel from '../models/user-model'
+import userModel from '../models/User'
 
 export default class StocksMemoryDAO {
   constructor () {
     this.data = new Map()
 
-    this.createStock(1, 'AAPL', 161.17, Date.now())
-    this.createUser(1, 'AAPL', 161.17, Date.now())
+    this.createUser(1, 'admin', 'Admin Dinkes', 'admin@example.com')
   }
 
-  createUser (id, name, currentPrice, lastUpdate) {
-    this.data.set(id, new userModel(id, name, currentPrice, lastUpdate))
-  }
-
-  createStock (id, name, currentPrice, lastUpdate) {
-    this.data.set(id, new stockModel(id, name, currentPrice, lastUpdate))
+  createUser (id, username, fullname, email) {
+    this.data.set(id, new userModel(id, username, fullname, email))
   }
 
   retrieveAll () {
@@ -29,22 +23,21 @@ export default class StocksMemoryDAO {
     }
   }
 
-  update (id, lastUpdate) {
+  update (id) {
     if (this.data.has(id)) {
       const stock = this.data.get(id)
-      stock.lastUpdate = lastUpdate
       return this.retrieve(stock.id)
     } else {
       throw new Error(`Stock with id ${id} not found`)
     }
   }
 
-  create (stock) {
-    if (this.data.has(stock.id)) {
-      throw new Error(`An stock with id ${stock.id} already exists`)
+  create (user) {
+    if (this.data.has(user.id)) {
+      throw new Error(`An stock with id ${user.id} already exists`)
     } else {
-      this.createStock(stock.id, stock.name, stock.currentPrice, stock.lastUpdate)
-      return this.retrieve(stock.id)
+      this.createUser(user.id, user.username, user.fullname, user.email)
+      return this.retrieve(user.id)
     }
   }
 }

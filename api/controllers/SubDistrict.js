@@ -8,114 +8,114 @@ const router = express.Router()
 
 /**
  * @swagger
- * /user:
+ * /areas/subdistricts:
  *   get:
- *     description: Retrieve the full list of user
+ *     description: Retrieve the full list of Subdistrict
  *     tags:
- *       - user
+ *       - subdistrict
  *     parameters:
  *       - in: query
- *         name: fullname
+ *         name: subdistrict_code
  *         schema:
  *           type: string
  *     produces:
  *       - application/json
  *     responses:
  *       200:
- *         description: user
+ *         description: Subdistrict
  *         schema:
- *           $ref: '#/definitions/Users'
+ *           $ref: '#/definitions/Subdistricts'
  */
 router.get('/', (req, res, next) => {
   const response = dao.retrieveAll()
-  Swagger.validateModel('User', response)
+  Swagger.validateModel('SubDistrict', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * /user/{id}:
+ * /areas/subdistricts/{id}:
  *   get:
- *     description: Retrieve an specific user
+ *     description: Retrieve an specific Subdistricts
  *     tags:
- *       - user
+ *       - subdistrict
  *     produces:
  *       - application/json
  *     parameters:
  *       - name: id
- *         description: id of the user to retrieve
+ *         description: id of the Subdistricts to retrieve
  *         in: path
  *         required: true
  *         type: number
  *     responses:
  *       200:
- *         description: user
+ *         description: subdistricts
  *         schema:
- *           $ref: '#/definitions/Users'
+ *           $ref: '#/definitions/Subdistricts'
  */
 router.get('/:id', (req, res, next) => {
   const response = dao.retrieve(parseInt(req.params.id, 10))
-  Swagger.validateModel('User', response)
+  Swagger.validateModel('SubDistrict', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * /user/{id}:
+ * /areas/subdistricts/{id}:
  *   put:
- *     description: Update lastUpdate field of an user
+ *     description: Update lastUpdate field of an Subdistrict
  *     tags:
- *       - user
+ *       - subdistrict
  *     produces:
  *       - application/json
  *     parameters:
  *       - name: id
- *         description: id of the user to update
+ *         description: id of the Subdistrict to update
  *         in: path
  *         required: true
  *         type: number
  *       - name: lastUpdate
- *         description: timestamp to use as user's lastUpdate field
+ *         description: timestamp to use as Subdistrict's lastUpdate field
  *         in: body
  *         required: true
  *     responses:
  *       200:
- *         description: updated user
+ *         description: updated Subdistrict
  *         schema:
- *           $ref: '#/definitions/Users'
+ *           $ref: '#/definitions/Subdistricts'
  */
 router.put('/:id', (req, res, next) => {
   const response = dao.update(parseInt(req.params.id, 10), req.body.lastUpdate)
-  Swagger.validateModel('User', response)
+  Swagger.validateModel('SubDistrict', response)
   res.send(response)
 })
 
 /**
  * @swagger
- * /user:
+ * /areas/subdistricts:
  *   post:
- *     description: Create a new user
+ *     description: Create a new Subdistrict
  *     tags:
- *       - user
+ *       - subdistrict
  *     produces:
  *       - application/json
  *     parameters:
- *       - name: user
- *         description: user object
+ *       - name: districtcity
+ *         description: Subdistrict object
  *         in: body
  *         required: true
  *         schema:
- *           $ref: '#/definitions/User'
+ *           $ref: '#/definitions/Subdistricts'
  *     responses:
  *       200:
- *         description: new user
+ *         description: new SubDistrict
  *         schema:
- *           $ref: '#/definitions/Users'
+ *           $ref: '#/definitions/Subdistricts'
  */
 router.post('/', (req, res, next) => {
-  Swagger.validateModel('User', req.body)
+  Swagger.validateModel('SubDistrict', req.body)
   const response = dao.create(req.body)
-  Swagger.validateModel('User', response)
+  Swagger.validateModel('SubDistrict', response)
   res.send(response)
 })
 
