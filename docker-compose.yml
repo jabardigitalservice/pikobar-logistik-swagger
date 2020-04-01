@@ -1,8 +1,16 @@
 version: '3.6'
 
+networks:
+  gateway:
+    external: true
+
+
 services:
   swagger-logistik:
     build: .
     command: npm start
     ports:
       - 3000:3000
+    networks:
+      - gateway
+
