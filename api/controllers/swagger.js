@@ -7,7 +7,7 @@ const swaggerDefinition = {
     version: '1.0.0',
     description: 'REST API with Swagger doc',
     contact: {
-      email: 'arifboyz16@gmail.com'
+      email: 'jds.itdev@gmail.com'
     }
   },
   schemes: ['http'],
