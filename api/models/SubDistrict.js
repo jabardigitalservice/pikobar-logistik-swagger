@@ -22,7 +22,9 @@
  *         - kemendagri_provinsi_kode
  *         - kemendagri_provinsi_nama
  *         - kemendagri_kabupaten_kode
- *         - kemendagri_provinsi_nama
+ *         - kemendagri_kabupaten_nama
+ *         - kemendagri_kecamatan_kode
+ *         - kemendagri_kecamatan_nama
  *   Subdistricts:
  *     type: array
  *     items:

@@ -20,7 +20,7 @@
  *         - kemendagri_provinsi_kode
  *         - kemendagri_provinsi_nama
  *         - kemendagri_kabupaten_kode
- *         - kemendagri_provinsi_nama
+ *         - kemendagri_kabupaten_nama
  *   Districtcitys:
  *     type: array
  *     items:

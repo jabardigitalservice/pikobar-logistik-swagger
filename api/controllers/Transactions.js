@@ -27,8 +27,34 @@ const router = express.Router()
  *           $ref: '#/definitions/Transactions'
  */
 router.get('/', (req, res, next) => {
-  const response = dao.retrieveAll()
-  Swagger.validateModel('Transactions', response)
+  const response = {
+    data: [
+      {
+        'id': '1',
+        'location_address': 'Kota Bandung',
+        'quantity': 12344,
+        'time': '2020-04-02T06:19:28.760Z'
+      },
+      {
+        'id': '2',
+        'location_address': 'Kota Cimahi',
+        'quantity': 12344,
+        'time': '2020-04-02T06:19:28.760Z'
+      }
+    ],
+    _meta: {
+      "itemCount": 2,
+      "perPage": 10,
+      "totalPages": 1,
+      "currentPage": 1,
+      "pagingCounter": 1,
+      "hasPrevPage": false,
+      "hasNextPage": true,
+      "prevPage": null,
+      "nextPage": 1
+    }
+  }
+  // Swagger.validateModel('Transactions', response)
   res.send(response)
 })
 

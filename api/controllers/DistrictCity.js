@@ -27,8 +27,36 @@ const router = express.Router()
  *           $ref: '#/definitions/Districtcitys'
  */
 router.get('/', (req, res, next) => {
-  const response = dao.retrieveAll()
-  Swagger.validateModel('Districtcity', response)
+  const response = {
+      data: [
+        {
+          'id': '1',
+          'kemendagri_provinsi_kode': '35',
+          'kemendagri_provinsi_nama': 'Jawa Barat',
+          'kemendagri_kabupaten_kode': '35.02',
+          'kemendagri_kabupaten_nama': 'Kota Bandung'
+        },
+        {
+          'id': '2',
+          'kemendagri_provinsi_kode': '35',
+          'kemendagri_provinsi_nama': 'Jawa Barat',
+          'kemendagri_kabupaten_kode': '35.03',
+          'kemendagri_kabupaten_nama': 'Kota Cimahi'
+        }
+      ],
+      _meta: {
+        "itemCount": 2,
+        "perPage": 10,
+        "totalPages": 1,
+        "currentPage": 1,
+        "pagingCounter": 1,
+        "hasPrevPage": false,
+        "hasNextPage": true,
+        "prevPage": null,
+        "nextPage": 1
+      }
+  }
+  // Swagger.validateModel('Districtcity', response)
   res.send(response)
 })
 
